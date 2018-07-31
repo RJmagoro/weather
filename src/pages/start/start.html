@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar>
+    <!-- <ion-searchbar
+    [(ngModel)]="cityname"
+    [showCancelButton]="shouldShowCancel"
+    (ionCancel)="onCancel($event)">
+  </ion-searchbar> -->
+  <ion-searchbar [(ngModel)]="cityname" id="search"
+
+    
+  [showCancelButton]="shouldShowCancel"
+  (ionInput)="onInput()"
+(ionCancel)="onCancel()">
+
+
+</ion-searchbar>
+     <!-- <button ion-button  ion-icon name="search" md="md-search"  class="symetric" (click)="select()"></button> -->
+     <ion-item>
+        <ion-label></ion-label>
+        <ion-select [(ngModel)]="conversionUnit">
+          <ion-option [value]="k">Kelvins</ion-option>
+          <ion-option [value]="f">Farenheight</ion-option>
+          <ion-option [value]="c">Celsius</ion-option>
+        </ion-select>
+      </ion-item>
+
+  </ion-navbar>
+ </ion-header>
+ <ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content>
+
+    </ion-refresher-content>
+  </ion-refresher>
+  <div class="cities" [@flyInOut]="flyInOutState">
+    <h1>{{infoList?.main.name}}</h1>
+    <div class="image-container">
+      <img src={{conditionCode}}>
+    </div>
+    <div class="info">
+      <h3>Today</h3>
+      <h3>{{cityname}}</h3>
+      <h1>{{temparature}}&#8451;</h1>
+    </div>
+    <div class="down">
+      <h2>{{min_temp}}&#8451;</h2>
+    </div>
+    <div class="right">
+      <h2>{{max_temp}}&#8451;</h2>
+    </div>
+    <div class="human">
+      <h3>Humidity</h3>
+      <h2>{{info?.main.humidity}}%</h2>
+
+    </div>
+  </div>
+  <!-- <button ion-button icon-only (click)="presentPopover($event)">
+      <ion-icon name="more"></ion-icon>
+    </button> -->
+ </ion-content>
